@@ -19,22 +19,22 @@ c_0 = 20;
 c_1 = 7;
 c_2 = 7;
 % Set desired formation to be an equilateral triangle
-x_d = 0.3*[0 0;
-    0 1;
-    1 0;
-    1 1];
+x_d = [0 0 0 1 1 0 1 1]';
+
 % Establish initial conditions for x:
 % e.g. robots starting in a vertical line at edge of map
 x_1 = [-4; -5];
 x_2 = [-4; -4];
 x_3 = [-4; -3];
 x_4 = [-4; -2];
-X(:,:,1) = [x_1';x_2';x_3';x_4'];
+X(:,1) = [x_1;x_2;x_3;x_4];
+
 % Establish initial conditions for v:
 % e.g. robots not moving
-V(:,:,1) = [0 0; 0 0; 0 0;0 0];
+V(:,:,1) = [0 0 0 0 0 0 0 0]';
 g_c(:,1) = center_gradient_estimate(X,1);
 u(:,:,1) = distributed_control(X(:,:,1),x_d,c_0,g_c(:,1),V(:,:,1),c_1,c_2,L_1,L_2);
+
 %% Step through simulation
 h = 0.01;
 t = 0:h:10;
