@@ -1,9 +1,9 @@
-function [z2_dot] = z2_consensus(x,z2,gamma, adjacency)
+function [z2_dot] = z2_consensus(x, z2, gamma, adjacency)
 %UNTITLED8 Summary of this function goes here
 %   Detailed explanation goes here
 k = size(x,1);
 n = size(x,2);
-Z2_dot = zeros(k,n);
+z2_dot = zeros(k,n);
 
 for ii = 1:n
     for jj=1:n
