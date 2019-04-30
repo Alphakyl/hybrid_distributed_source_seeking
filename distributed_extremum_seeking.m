@@ -2,16 +2,13 @@
 close all
 clear all
 clc
+
 %% Create initial conditions
 % Generate an all to all graph for a 3 robot system represented by the
 % graphs laplacian L_0
-% L_0 = [2 -1 -1;
-%     -1 2 -1;
-%     -1 -1 2];
-L_0 = [3 -2 -2 -2;
-    -2 3 -2 -2;
-    -2 -2 3 -2;
-    -2 -2 -2 3];
+L_0 = [1 -1 0;
+    -1 2 -1;
+    0 -1 1];
 % Use constants and scaling from Shang Li
 L_1 = 6*L_0;
 L_2 = L_0;
@@ -21,18 +18,20 @@ c_2 = 7;
 % Set desired formation to be an equilateral triangle
 x_d = 0.3*[0 0;
     0 1;
-    1 0;
-    1 1];
+    1 0];
 % Establish initial conditions for x:
 % e.g. robots starting in a vertical line at edge of map
-x_1 = [-4; -5];
-x_2 = [-4; -4];
-x_3 = [-4; -3];
-x_4 = [-4; -2];
-X(:,:,1) = [x_1';x_2';x_3';x_4'];
+x(:,1) = [-4; -5];
+x(:,2) = [-4; -4];
+x(:,3) = [-4; -3];
 % Establish initial conditions for v:
 % e.g. robots not moving
-V(:,:,1) = [0 0; 0 0; 0 0;0 0];
+v = zeros(size(x));
+for ii = 1:size(x,2)
+    p(ii,:) = scalar_field_fnc(x(:,ii));
+end
+
+
 g_c(:,1) = center_gradient_estimate(X,1);
 u(:,:,1) = distributed_control(X(:,:,1),x_d,c_0,g_c(:,1),V(:,:,1),c_1,c_2,L_1,L_2);
 %% Step through simulation
