@@ -44,7 +44,7 @@ while(norm(g_c(:,ii-1))>0.05)
    V(:,:,ii) = RK4_velocity(V(:,:,ii-1),u(:,:,ii-1),h);
    X(:,:,ii) = RK4_position(X(:,:,ii-1),V(:,:,ii-1),h);
    g_c(:,ii) = center_gradient_estimate(X,ii);
-   u(:,:,ii) = distributed_control(X(:,:,ii),x_d,c_0,g_c(:,ii),V(:,:,ii),c_1,c_2,L_1,L_2);
+   u(:,:,ii) = all_to_all_control(X(:,:,ii),x_d,c_0,g_c(:,ii),V(:,:,ii),c_1,c_2,L_1,L_2);
    ii = ii+1;
 end
 %end
