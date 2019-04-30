@@ -13,4 +13,5 @@ for ii = 1:n
     end
     z2_dot(:,ii) = z2_dot(:,ii)+gamma*(x(:,ii)-z2(:,ii));
 end
+end
 
