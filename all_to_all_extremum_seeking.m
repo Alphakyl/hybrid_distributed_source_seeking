@@ -34,13 +34,13 @@ X(:,:,1) = [x_1';x_2';x_3';x_4'];
 % e.g. robots not moving
 V(:,:,1) = [0 0; 0 0; 0 0;0 0];
 g_c(:,1) = center_gradient_estimate(X,1);
-u(:,:,1) = distributed_control(X(:,:,1),x_d,c_0,g_c(:,1),V(:,:,1),c_1,c_2,L_1,L_2);
+u(:,:,1) = all_to_all_control(X(:,:,1),x_d,c_0,g_c(:,1),V(:,:,1),c_1,c_2,L_1,L_2);
 %% Step through simulation
 h = 0.01;
 t = 0:h:10;
 %for ii=2:length(t)
 ii = 2;
-while(norm(g_c(:,ii-1))>0.05)
+while(norm(g_c(:,ii-1))>0.03)
    V(:,:,ii) = RK4_velocity(V(:,:,ii-1),u(:,:,ii-1),h);
    X(:,:,ii) = RK4_position(X(:,:,ii-1),V(:,:,ii-1),h);
    g_c(:,ii) = center_gradient_estimate(X,ii);

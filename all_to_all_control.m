@@ -12,7 +12,7 @@ for ii = 1:n
             % sum_j\in F(i) w1ij(x_i-x_j-x_di+x_dj)
             temp1 = -L_1(ii,jj)*(x(ii,:)-x(jj,:)-x_d(ii,:)+x_d(jj,:));
             % sum_j\in F(i) w2ij(vi-vj)
-            temp3 = -L_2(ii,jj)*(v(ii,:)-x(jj,:));
+            temp3 = -L_2(ii,jj)*(v(ii,:)-v(jj,:));
         end
     end
     % c_0 gc
