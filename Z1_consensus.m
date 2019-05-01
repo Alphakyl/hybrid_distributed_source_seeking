@@ -10,7 +10,7 @@ for ii = 1:n
             Z1_dot(:,:,ii) = Z1_dot(:,:,ii)+adjacency(ii,jj)*(Z1(:,:,jj)-Z1(:,:,ii));
         end
     end
-    Z1_dot(:,:,ii) = Z1_dot(:,:,ii)+gamma(x(:,ii)*x(:,ii)'-Z1(:,:,ii));
+    Z1_dot(:,:,ii) = Z1_dot(:,:,ii)+gamma*(x(:,ii)*x(:,ii)'-Z1(:,:,ii));
 end
 end
 
