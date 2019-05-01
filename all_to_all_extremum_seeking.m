@@ -40,7 +40,7 @@ h = 0.01;
 t = 0:h:10;
 %for ii=2:length(t)
 ii = 2;
-while(norm(g_c(:,ii-1))>0.03)
+while(norm(g_c(:,ii-1))>0.01)
    V(:,:,ii) = RK4_velocity(V(:,:,ii-1),u(:,:,ii-1),h);
    X(:,:,ii) = RK4_position(X(:,:,ii-1),V(:,:,ii-1),h);
    g_c(:,ii) = center_gradient_estimate(X,ii);
