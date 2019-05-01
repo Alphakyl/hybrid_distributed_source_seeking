@@ -1,8 +1,8 @@
 function [z5_dot] = z5_consensus(v, z5, gamma, adjacency)
 %UNTITLED13 Summary of this function goes here
 %   Detailed explanation goes here
-k = size(x,1);
-n = size(x,2);
+k = size(v,1);
+n = size(v,2);
 z5_dot = zeros(k,n);
 
 for ii = 1:n
