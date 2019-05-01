@@ -1,4 +1,4 @@
-function [Z3] = RK4_Z3(x,Z3,gamma,adjacency)
+function [Z3] = RK4_Z3(x,Z3,gamma,adjacency,h)
 %UNTITLED17 Summary of this function goes here
 %   Detailed explanation goes here
     %k_1 = h*robot_position(v);
